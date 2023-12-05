@@ -1,333 +1,829 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : mysql
- Source Server Type    : MySQL
- Source Server Version : 80033 (8.0.33)
- Source Host           : localhost:3306
- Source Schema         : pet_hospital
+ Source Server         : oracle
+ Source Server Type    : Oracle
+ Source Server Version : 190000 (Oracle Database 19c Enterprise Edition Release 19.0.0.0.0 - Production)
+ Source Host           : localhost:1521
+ Source Schema         : WENSON
 
- Target Server Type    : MySQL
- Target Server Version : 80033 (8.0.33)
+ Target Server Type    : Oracle
+ Target Server Version : 190000 (Oracle Database 19c Enterprise Edition Release 19.0.0.0.0 - Production)
  File Encoding         : 65001
 
- Date: 05/12/2023 17:38:57
+ Date: 06/12/2023 00:34:04
 */
 
-SET NAMES utf8mb4;
-SET FOREIGN_KEY_CHECKS = 0;
 
 -- ----------------------------
--- Table structure for chongwuxinxi
+-- Table structure for CHONGWUXINXI
 -- ----------------------------
-DROP TABLE IF EXISTS `chongwuxinxi`;
-CREATE TABLE `chongwuxinxi`  (
-  `id` decimal(20, 0) NOT NULL COMMENT '主键',
-  `addtime` datetime NOT NULL COMMENT '创建时间',
-  `chongwubianhao` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '宠物编号',
-  `chongwumingcheng` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '宠物名称',
-  `pinzhong` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '品种',
-  `tupian` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '图片',
-  `nianling` decimal(11, 0) NULL DEFAULT NULL COMMENT '年龄',
-  `chongwuxiangqing` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL COMMENT '宠物详情',
-  `clicktime` datetime NULL DEFAULT NULL COMMENT '最近点击时间',
-  `clicknum` decimal(11, 0) NULL DEFAULT NULL COMMENT '点击次数',
-  PRIMARY KEY (`id`) USING BTREE,
-  UNIQUE INDEX `chongwubianhao`(`chongwubianhao` ASC) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '宠物信息' ROW_FORMAT = Dynamic;
+DROP TABLE "WENSON"."CHONGWUXINXI";
+CREATE TABLE "WENSON"."CHONGWUXINXI" (
+  "ID" NUMBER(20,0) VISIBLE NOT NULL,
+  "ADDTIME" DATE VISIBLE NOT NULL,
+  "CHONGWUBIANHAO" NVARCHAR2(200) VISIBLE,
+  "CHONGWUMINGCHENG" NVARCHAR2(200) VISIBLE NOT NULL,
+  "PINZHONG" NVARCHAR2(200) VISIBLE NOT NULL,
+  "TUPIAN" NVARCHAR2(200) VISIBLE,
+  "NIANLING" NUMBER(11,0) VISIBLE,
+  "CHONGWUXIANGQING" NCLOB VISIBLE,
+  "CLICKTIME" DATE VISIBLE,
+  "CLICKNUM" NUMBER(11,0) VISIBLE
+)
+LOGGING
+NOCOMPRESS
+PCTFREE 10
+INITRANS 1
+STORAGE (
+  INITIAL 65536 
+  NEXT 1048576 
+  MINEXTENTS 1
+  MAXEXTENTS 2147483645
+  BUFFER_POOL DEFAULT
+)
+PARALLEL 1
+NOCACHE
+DISABLE ROW MOVEMENT
+;
+COMMENT ON COLUMN "WENSON"."CHONGWUXINXI"."ID" IS '主键';
+COMMENT ON COLUMN "WENSON"."CHONGWUXINXI"."ADDTIME" IS '创建时间';
+COMMENT ON COLUMN "WENSON"."CHONGWUXINXI"."CHONGWUBIANHAO" IS '宠物编号';
+COMMENT ON COLUMN "WENSON"."CHONGWUXINXI"."CHONGWUMINGCHENG" IS '宠物名称';
+COMMENT ON COLUMN "WENSON"."CHONGWUXINXI"."PINZHONG" IS '品种';
+COMMENT ON COLUMN "WENSON"."CHONGWUXINXI"."TUPIAN" IS '图片';
+COMMENT ON COLUMN "WENSON"."CHONGWUXINXI"."NIANLING" IS '年龄';
+COMMENT ON COLUMN "WENSON"."CHONGWUXINXI"."CHONGWUXIANGQING" IS '宠物详情';
+COMMENT ON COLUMN "WENSON"."CHONGWUXINXI"."CLICKTIME" IS '最近点击时间';
+COMMENT ON COLUMN "WENSON"."CHONGWUXINXI"."CLICKNUM" IS '点击次数';
+COMMENT ON TABLE "WENSON"."CHONGWUXINXI" IS '宠物信息';
 
 -- ----------------------------
--- Records of chongwuxinxi
+-- Records of CHONGWUXINXI
 -- ----------------------------
-INSERT INTO `chongwuxinxi` VALUES (1701762407786, '2023-12-05 15:46:47', '1701762376908', '贵妇犬', '犬类', 'http://localhost:8080/petHospital/upload/1701762389654.png', 5, '<p>优雅</p>', '2023-12-05 16:12:13', 6);
-INSERT INTO `chongwuxinxi` VALUES (1701762481947, '2023-12-05 15:48:01', '1701762460345', '雷鸣仙', '鱼类', 'http://localhost:8080/petHospital/upload/1701762464308.png', 1, '<p>霸气</p>', '2023-12-05 16:01:41', 1);
+INSERT INTO "WENSON"."CHONGWUXINXI" VALUES ('1701762407786', TO_DATE('2023-12-05 15:46:47', 'SYYYY-MM-DD HH24:MI:SS'), '1701762376908', '贵妇犬', '犬类', 'http://localhost:8080/petHospital/upload/1701762389654.png', '5', '<p>优雅</p>', TO_DATE('2023-12-05 16:12:13', 'SYYYY-MM-DD HH24:MI:SS'), '6');
+INSERT INTO "WENSON"."CHONGWUXINXI" VALUES ('1701762481947', TO_DATE('2023-12-05 15:48:01', 'SYYYY-MM-DD HH24:MI:SS'), '1701762460345', '雷鸣仙', '鱼类', 'http://localhost:8080/petHospital/upload/1701762464308.png', '1', '<p>霸气</p>', TO_DATE('2023-12-05 16:01:41', 'SYYYY-MM-DD HH24:MI:SS'), '1');
 
 -- ----------------------------
--- Table structure for config
+-- Table structure for CONFIG
 -- ----------------------------
-DROP TABLE IF EXISTS `config`;
-CREATE TABLE `config`  (
-  `id` decimal(20, 0) NOT NULL COMMENT '主键',
-  `name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '配置参数名称',
-  `value` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '配置参数值',
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '配置文件' ROW_FORMAT = Dynamic;
+DROP TABLE "WENSON"."CONFIG";
+CREATE TABLE "WENSON"."CONFIG" (
+  "ID" NUMBER(20,0) VISIBLE NOT NULL,
+  "NAME" NVARCHAR2(100) VISIBLE NOT NULL,
+  "VALUE" NVARCHAR2(100) VISIBLE
+)
+LOGGING
+NOCOMPRESS
+PCTFREE 10
+INITRANS 1
+STORAGE (
+  INITIAL 65536 
+  NEXT 1048576 
+  MINEXTENTS 1
+  MAXEXTENTS 2147483645
+  BUFFER_POOL DEFAULT
+)
+PARALLEL 1
+NOCACHE
+DISABLE ROW MOVEMENT
+;
+COMMENT ON COLUMN "WENSON"."CONFIG"."ID" IS '主键';
+COMMENT ON COLUMN "WENSON"."CONFIG"."NAME" IS '配置参数名称';
+COMMENT ON COLUMN "WENSON"."CONFIG"."VALUE" IS '配置参数值';
+COMMENT ON TABLE "WENSON"."CONFIG" IS '配置文件';
 
 -- ----------------------------
--- Records of config
+-- Records of CONFIG
 -- ----------------------------
-INSERT INTO `config` VALUES (1, 'picture1', 'http://localhost:8080/petHospital/upload/1701626986582.jpg');
-INSERT INTO `config` VALUES (2, 'picture2', 'http://localhost:8080/petHospital/upload/1701626995592.jpg');
-INSERT INTO `config` VALUES (3, 'picture3', 'http://localhost:8080/petHospital/upload/1701627003284.jpg');
-INSERT INTO `config` VALUES (6, 'homepage', 'http://localhost:8080/petHospital/upload/1701627025473.jpg');
+INSERT INTO "WENSON"."CONFIG" VALUES ('1', 'picture1', 'http://localhost:8080/petHospital/upload/1701626986582.jpg');
+INSERT INTO "WENSON"."CONFIG" VALUES ('2', 'picture2', 'http://localhost:8080/petHospital/upload/1701626995592.jpg');
+INSERT INTO "WENSON"."CONFIG" VALUES ('3', 'picture3', 'http://localhost:8080/petHospital/upload/1701627003284.jpg');
+INSERT INTO "WENSON"."CONFIG" VALUES ('6', 'homepage', 'http://localhost:8080/petHospital/upload/1701627025473.jpg');
 
 -- ----------------------------
--- Table structure for forum
+-- Table structure for FORUM
 -- ----------------------------
-DROP TABLE IF EXISTS `forum`;
-CREATE TABLE `forum`  (
-  `id` decimal(20, 0) NOT NULL COMMENT '主键',
-  `addtime` datetime NOT NULL COMMENT '创建时间',
-  `title` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '帖子标题',
-  `content` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '帖子内容',
-  `parentid` decimal(20, 0) NULL DEFAULT NULL COMMENT '父节点id',
-  `userid` decimal(20, 0) NOT NULL COMMENT '用户id',
-  `username` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '用户名',
-  `isdone` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '状态',
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '宠物论坛' ROW_FORMAT = Dynamic;
+DROP TABLE "WENSON"."FORUM";
+CREATE TABLE "WENSON"."FORUM" (
+  "ID" NUMBER(20,0) VISIBLE NOT NULL,
+  "ADDTIME" DATE VISIBLE NOT NULL,
+  "TITLE" NVARCHAR2(200) VISIBLE,
+  "CONTENT" NCLOB VISIBLE NOT NULL,
+  "PARENTID" NUMBER(20,0) VISIBLE,
+  "USERID" NUMBER(20,0) VISIBLE NOT NULL,
+  "USERNAME" NVARCHAR2(200) VISIBLE,
+  "ISDONE" NVARCHAR2(200) VISIBLE
+)
+LOGGING
+NOCOMPRESS
+PCTFREE 10
+INITRANS 1
+STORAGE (
+  INITIAL 65536 
+  NEXT 1048576 
+  MINEXTENTS 1
+  MAXEXTENTS 2147483645
+  BUFFER_POOL DEFAULT
+)
+PARALLEL 1
+NOCACHE
+DISABLE ROW MOVEMENT
+;
+COMMENT ON COLUMN "WENSON"."FORUM"."ID" IS '主键';
+COMMENT ON COLUMN "WENSON"."FORUM"."ADDTIME" IS '创建时间';
+COMMENT ON COLUMN "WENSON"."FORUM"."TITLE" IS '帖子标题';
+COMMENT ON COLUMN "WENSON"."FORUM"."CONTENT" IS '帖子内容';
+COMMENT ON COLUMN "WENSON"."FORUM"."PARENTID" IS '父节点id';
+COMMENT ON COLUMN "WENSON"."FORUM"."USERID" IS '用户id';
+COMMENT ON COLUMN "WENSON"."FORUM"."USERNAME" IS '用户名';
+COMMENT ON COLUMN "WENSON"."FORUM"."ISDONE" IS '状态';
+COMMENT ON TABLE "WENSON"."FORUM" IS '宠物论坛';
 
 -- ----------------------------
--- Records of forum
+-- Records of FORUM
 -- ----------------------------
-INSERT INTO `forum` VALUES (1701762194679, '2023-12-05 15:43:14', 'test', '<p>666</p>\n<div id=\"gtx-trans\" style=\"position: absolute; left: -235px; top: -12px;\">\n<div class=\"gtx-trans-icon\">&nbsp;</div>\n</div>', 0, 1618488891531, '01', '开放');
+INSERT INTO "WENSON"."FORUM" VALUES ('1701762194679', TO_DATE('2023-12-05 15:43:14', 'SYYYY-MM-DD HH24:MI:SS'), 'test', '<p>666</p>
+<div id="gtx-trans" style="position: absolute; left: -235px; top: -12px;">
+<div class="gtx-trans-icon">&nbsp;</div>
+</div>', '0', '1618488891531', '01', '开放');
 
 -- ----------------------------
--- Table structure for guahaoyuyue
+-- Table structure for GUAHAOYUYUE
 -- ----------------------------
-DROP TABLE IF EXISTS `guahaoyuyue`;
-CREATE TABLE `guahaoyuyue`  (
-  `id` decimal(20, 0) NOT NULL COMMENT '主键',
-  `addtime` datetime NOT NULL COMMENT '创建时间',
-  `shouling` decimal(11, 0) NULL DEFAULT NULL COMMENT '兽龄',
-  `chongwuxinxi` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL COMMENT '宠物信息',
-  `yishengxingming` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '医生姓名',
-  `yuyueshijian` datetime NULL DEFAULT NULL COMMENT '预约时间',
-  `yonghuming` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '用户名',
-  `xingming` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '姓名',
-  `sfsh` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '是否审核',
-  `shhf` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL COMMENT '审核回复',
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '挂号预约' ROW_FORMAT = Dynamic;
+DROP TABLE "WENSON"."GUAHAOYUYUE";
+CREATE TABLE "WENSON"."GUAHAOYUYUE" (
+  "ID" NUMBER(20,0) VISIBLE NOT NULL,
+  "ADDTIME" DATE VISIBLE NOT NULL,
+  "SHOULING" NUMBER(11,0) VISIBLE,
+  "CHONGWUXINXI" NCLOB VISIBLE,
+  "YISHENGXINGMING" NVARCHAR2(200) VISIBLE,
+  "YUYUESHIJIAN" DATE VISIBLE,
+  "YONGHUMING" NVARCHAR2(200) VISIBLE NOT NULL,
+  "XINGMING" NVARCHAR2(200) VISIBLE,
+  "SFSH" NVARCHAR2(200) VISIBLE,
+  "SHHF" NCLOB VISIBLE
+)
+LOGGING
+NOCOMPRESS
+PCTFREE 10
+INITRANS 1
+STORAGE (
+  INITIAL 65536 
+  NEXT 1048576 
+  MINEXTENTS 1
+  MAXEXTENTS 2147483645
+  BUFFER_POOL DEFAULT
+)
+PARALLEL 1
+NOCACHE
+DISABLE ROW MOVEMENT
+;
+COMMENT ON COLUMN "WENSON"."GUAHAOYUYUE"."ID" IS '主键';
+COMMENT ON COLUMN "WENSON"."GUAHAOYUYUE"."ADDTIME" IS '创建时间';
+COMMENT ON COLUMN "WENSON"."GUAHAOYUYUE"."SHOULING" IS '兽龄';
+COMMENT ON COLUMN "WENSON"."GUAHAOYUYUE"."CHONGWUXINXI" IS '宠物信息';
+COMMENT ON COLUMN "WENSON"."GUAHAOYUYUE"."YISHENGXINGMING" IS '医生姓名';
+COMMENT ON COLUMN "WENSON"."GUAHAOYUYUE"."YUYUESHIJIAN" IS '预约时间';
+COMMENT ON COLUMN "WENSON"."GUAHAOYUYUE"."YONGHUMING" IS '用户名';
+COMMENT ON COLUMN "WENSON"."GUAHAOYUYUE"."XINGMING" IS '姓名';
+COMMENT ON COLUMN "WENSON"."GUAHAOYUYUE"."SFSH" IS '是否审核';
+COMMENT ON COLUMN "WENSON"."GUAHAOYUYUE"."SHHF" IS '审核回复';
+COMMENT ON TABLE "WENSON"."GUAHAOYUYUE" IS '挂号预约';
 
 -- ----------------------------
--- Records of guahaoyuyue
+-- Records of GUAHAOYUYUE
 -- ----------------------------
-INSERT INTO `guahaoyuyue` VALUES (1701761541976, '2023-12-05 15:32:34', 41, NULL, '医生姓名1', '2023-12-05 00:00:00', '01', '01', NULL, NULL);
-INSERT INTO `guahaoyuyue` VALUES (1701762183355, '2023-12-05 15:43:02', 18, NULL, '医生姓名1', '2023-12-12 00:00:00', '01', '01', NULL, NULL);
+INSERT INTO "WENSON"."GUAHAOYUYUE" VALUES ('1701762183355', TO_DATE('2023-12-05 15:43:02', 'SYYYY-MM-DD HH24:MI:SS'), '18', NULL, '医生姓名1', TO_DATE('2023-12-12 00:00:00', 'SYYYY-MM-DD HH24:MI:SS'), '01', '01', NULL, NULL);
+INSERT INTO "WENSON"."GUAHAOYUYUE" VALUES ('1701761541976', TO_DATE('2023-12-05 15:32:34', 'SYYYY-MM-DD HH24:MI:SS'), '41', NULL, '医生姓名1', TO_DATE('2023-12-05 00:00:00', 'SYYYY-MM-DD HH24:MI:SS'), '01', '01', NULL, NULL);
 
 -- ----------------------------
--- Table structure for jiyang
+-- Table structure for JIYANG
 -- ----------------------------
-DROP TABLE IF EXISTS `jiyang`;
-CREATE TABLE `jiyang`  (
-  `id` decimal(20, 0) NOT NULL COMMENT '主键',
-  `addtime` datetime NOT NULL COMMENT '创建时间',
-  `yonghuming` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '用户名',
-  `xingming` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '姓名',
-  `chongwumingcheng` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '宠物名称',
-  `shouling` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '兽龄',
-  `chongwuxiangqing` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL COMMENT '宠物详情',
-  `riqi` datetime NULL DEFAULT NULL COMMENT '日期',
-  `sfsh` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '是否审核',
-  `shhf` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL COMMENT '审核回复',
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '寄养' ROW_FORMAT = Dynamic;
+DROP TABLE "WENSON"."JIYANG";
+CREATE TABLE "WENSON"."JIYANG" (
+  "ID" NUMBER(20,0) VISIBLE NOT NULL,
+  "ADDTIME" DATE VISIBLE NOT NULL,
+  "YONGHUMING" NVARCHAR2(200) VISIBLE,
+  "XINGMING" NVARCHAR2(200) VISIBLE,
+  "CHONGWUMINGCHENG" NVARCHAR2(200) VISIBLE,
+  "SHOULING" NVARCHAR2(200) VISIBLE,
+  "CHONGWUXIANGQING" NCLOB VISIBLE,
+  "RIQI" DATE VISIBLE,
+  "SFSH" NVARCHAR2(200) VISIBLE,
+  "SHHF" NCLOB VISIBLE
+)
+LOGGING
+NOCOMPRESS
+PCTFREE 10
+INITRANS 1
+STORAGE (
+  INITIAL 65536 
+  NEXT 1048576 
+  MINEXTENTS 1
+  MAXEXTENTS 2147483645
+  BUFFER_POOL DEFAULT
+)
+PARALLEL 1
+NOCACHE
+DISABLE ROW MOVEMENT
+;
+COMMENT ON COLUMN "WENSON"."JIYANG"."ID" IS '主键';
+COMMENT ON COLUMN "WENSON"."JIYANG"."ADDTIME" IS '创建时间';
+COMMENT ON COLUMN "WENSON"."JIYANG"."YONGHUMING" IS '用户名';
+COMMENT ON COLUMN "WENSON"."JIYANG"."XINGMING" IS '姓名';
+COMMENT ON COLUMN "WENSON"."JIYANG"."CHONGWUMINGCHENG" IS '宠物名称';
+COMMENT ON COLUMN "WENSON"."JIYANG"."SHOULING" IS '兽龄';
+COMMENT ON COLUMN "WENSON"."JIYANG"."CHONGWUXIANGQING" IS '宠物详情';
+COMMENT ON COLUMN "WENSON"."JIYANG"."RIQI" IS '日期';
+COMMENT ON COLUMN "WENSON"."JIYANG"."SFSH" IS '是否审核';
+COMMENT ON COLUMN "WENSON"."JIYANG"."SHHF" IS '审核回复';
+COMMENT ON TABLE "WENSON"."JIYANG" IS '寄养';
 
 -- ----------------------------
--- Records of jiyang
+-- Records of JIYANG
 -- ----------------------------
-INSERT INTO `jiyang` VALUES (1701764006733, '2023-12-05 16:13:25', '01', '01', '玳龟', '64', NULL, '2023-12-07 00:00:00', '是', NULL);
+INSERT INTO "WENSON"."JIYANG" VALUES ('1701764006733', TO_DATE('2023-12-05 16:13:25', 'SYYYY-MM-DD HH24:MI:SS'), '01', '01', '玳龟', '64', NULL, TO_DATE('2023-12-07 00:00:00', 'SYYYY-MM-DD HH24:MI:SS'), '是', NULL);
 
 -- ----------------------------
--- Table structure for jiyangjieguo
+-- Table structure for JIYANGJIEGUO
 -- ----------------------------
-DROP TABLE IF EXISTS `jiyangjieguo`;
-CREATE TABLE `jiyangjieguo`  (
-  `id` decimal(20, 0) NOT NULL COMMENT '主键',
-  `addtime` datetime NOT NULL COMMENT '创建时间',
-  `yonghuming` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '用户名',
-  `xingming` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '姓名',
-  `chongwumingcheng` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '宠物名称',
-  `lingyangriqi` datetime NULL DEFAULT NULL COMMENT '领养日期',
-  `jiyangjieguo` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '寄养结果',
-  `lingyangrenxingming` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '领养人姓名',
-  `lianxifangshi` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '联系方式',
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '寄养结果' ROW_FORMAT = Dynamic;
+DROP TABLE "WENSON"."JIYANGJIEGUO";
+CREATE TABLE "WENSON"."JIYANGJIEGUO" (
+  "ID" NUMBER(20,0) VISIBLE NOT NULL,
+  "ADDTIME" DATE VISIBLE NOT NULL,
+  "YONGHUMING" NVARCHAR2(200) VISIBLE,
+  "XINGMING" NVARCHAR2(200) VISIBLE,
+  "CHONGWUMINGCHENG" NVARCHAR2(200) VISIBLE,
+  "LINGYANGRIQI" DATE VISIBLE,
+  "JIYANGJIEGUO" NVARCHAR2(200) VISIBLE,
+  "LINGYANGRENXINGMING" NVARCHAR2(200) VISIBLE,
+  "LIANXIFANGSHI" NVARCHAR2(200) VISIBLE
+)
+LOGGING
+NOCOMPRESS
+PCTFREE 10
+INITRANS 1
+STORAGE (
+  INITIAL 65536 
+  NEXT 1048576 
+  MINEXTENTS 1
+  MAXEXTENTS 2147483645
+  BUFFER_POOL DEFAULT
+)
+PARALLEL 1
+NOCACHE
+DISABLE ROW MOVEMENT
+;
+COMMENT ON COLUMN "WENSON"."JIYANGJIEGUO"."ID" IS '主键';
+COMMENT ON COLUMN "WENSON"."JIYANGJIEGUO"."ADDTIME" IS '创建时间';
+COMMENT ON COLUMN "WENSON"."JIYANGJIEGUO"."YONGHUMING" IS '用户名';
+COMMENT ON COLUMN "WENSON"."JIYANGJIEGUO"."XINGMING" IS '姓名';
+COMMENT ON COLUMN "WENSON"."JIYANGJIEGUO"."CHONGWUMINGCHENG" IS '宠物名称';
+COMMENT ON COLUMN "WENSON"."JIYANGJIEGUO"."LINGYANGRIQI" IS '领养日期';
+COMMENT ON COLUMN "WENSON"."JIYANGJIEGUO"."JIYANGJIEGUO" IS '寄养结果';
+COMMENT ON COLUMN "WENSON"."JIYANGJIEGUO"."LINGYANGRENXINGMING" IS '领养人姓名';
+COMMENT ON COLUMN "WENSON"."JIYANGJIEGUO"."LIANXIFANGSHI" IS '联系方式';
+COMMENT ON TABLE "WENSON"."JIYANGJIEGUO" IS '寄养结果';
 
 -- ----------------------------
--- Records of jiyangjieguo
+-- Records of JIYANGJIEGUO
 -- ----------------------------
-INSERT INTO `jiyangjieguo` VALUES (71, '2023-08-15 20:04:52', '用户1', '姓名1', '宠物名称1', '2023-08-15 20:04:52', '成功', '领养人姓名1', '13823888881');
-INSERT INTO `jiyangjieguo` VALUES (72, '2023-08-15 20:04:52', '用户2', '姓名2', '宠物名称2', '2023-08-15 20:04:52', '成功', '领养人姓名2', '13823888882');
-INSERT INTO `jiyangjieguo` VALUES (73, '2023-08-15 20:04:52', '用户3', '姓名3', '宠物名称3', '2023-08-15 20:04:52', '成功', '领养人姓名3', '13823888883');
-INSERT INTO `jiyangjieguo` VALUES (74, '2023-08-15 20:04:52', '用户4', '姓名4', '宠物名称4', '2023-08-15 20:04:52', '成功', '领养人姓名4', '13823888884');
-INSERT INTO `jiyangjieguo` VALUES (75, '2023-08-15 20:04:52', '用户5', '姓名5', '宠物名称5', '2023-08-15 20:04:52', '成功', '领养人姓名5', '13823888885');
-INSERT INTO `jiyangjieguo` VALUES (76, '2023-08-15 20:04:52', '用户6', '姓名6', '宠物名称6', '2023-08-15 20:04:52', '成功', '领养人姓名6', '13823888886');
-INSERT INTO `jiyangjieguo` VALUES (1618489227471, '2023-08-15 20:20:26', '01', '01', '旺财', '2023-08-15 20:20:15', '成功', '123', '12345678912');
-INSERT INTO `jiyangjieguo` VALUES (1694410602545, '2023-09-11 13:36:41', '用户1', '姓名1', '宠物狗', '2023-09-11 13:36:32', '成功', '张三', '15073171170');
+INSERT INTO "WENSON"."JIYANGJIEGUO" VALUES ('71', TO_DATE('2023-08-15 20:04:52', 'SYYYY-MM-DD HH24:MI:SS'), '用户1', '姓名1', '宠物名称1', TO_DATE('2023-08-15 20:04:52', 'SYYYY-MM-DD HH24:MI:SS'), '成功', '领养人姓名1', '13823888881');
+INSERT INTO "WENSON"."JIYANGJIEGUO" VALUES ('72', TO_DATE('2023-08-15 20:04:52', 'SYYYY-MM-DD HH24:MI:SS'), '用户2', '姓名2', '宠物名称2', TO_DATE('2023-08-15 20:04:52', 'SYYYY-MM-DD HH24:MI:SS'), '成功', '领养人姓名2', '13823888882');
+INSERT INTO "WENSON"."JIYANGJIEGUO" VALUES ('73', TO_DATE('2023-08-15 20:04:52', 'SYYYY-MM-DD HH24:MI:SS'), '用户3', '姓名3', '宠物名称3', TO_DATE('2023-08-15 20:04:52', 'SYYYY-MM-DD HH24:MI:SS'), '成功', '领养人姓名3', '13823888883');
+INSERT INTO "WENSON"."JIYANGJIEGUO" VALUES ('74', TO_DATE('2023-08-15 20:04:52', 'SYYYY-MM-DD HH24:MI:SS'), '用户4', '姓名4', '宠物名称4', TO_DATE('2023-08-15 20:04:52', 'SYYYY-MM-DD HH24:MI:SS'), '成功', '领养人姓名4', '13823888884');
+INSERT INTO "WENSON"."JIYANGJIEGUO" VALUES ('75', TO_DATE('2023-08-15 20:04:52', 'SYYYY-MM-DD HH24:MI:SS'), '用户5', '姓名5', '宠物名称5', TO_DATE('2023-08-15 20:04:52', 'SYYYY-MM-DD HH24:MI:SS'), '成功', '领养人姓名5', '13823888885');
+INSERT INTO "WENSON"."JIYANGJIEGUO" VALUES ('76', TO_DATE('2023-08-15 20:04:52', 'SYYYY-MM-DD HH24:MI:SS'), '用户6', '姓名6', '宠物名称6', TO_DATE('2023-08-15 20:04:52', 'SYYYY-MM-DD HH24:MI:SS'), '成功', '领养人姓名6', '13823888886');
+INSERT INTO "WENSON"."JIYANGJIEGUO" VALUES ('1618489227471', TO_DATE('2023-08-15 20:20:26', 'SYYYY-MM-DD HH24:MI:SS'), '01', '01', '旺财', TO_DATE('2023-08-15 20:20:15', 'SYYYY-MM-DD HH24:MI:SS'), '成功', '123', '12345678912');
+INSERT INTO "WENSON"."JIYANGJIEGUO" VALUES ('1694410602545', TO_DATE('2023-09-11 13:36:41', 'SYYYY-MM-DD HH24:MI:SS'), '用户1', '姓名1', '宠物狗', TO_DATE('2023-09-11 13:36:32', 'SYYYY-MM-DD HH24:MI:SS'), '成功', '张三', '15073171170');
 
 -- ----------------------------
--- Table structure for lingyang
+-- Table structure for LINGYANG
 -- ----------------------------
-DROP TABLE IF EXISTS `lingyang`;
-CREATE TABLE `lingyang`  (
-  `id` decimal(20, 0) NOT NULL COMMENT '主键',
-  `addtime` datetime NOT NULL COMMENT '创建时间',
-  `yonghuming` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '用户名',
-  `xingming` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '姓名',
-  `chongwubianhao` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '宠物编号',
-  `chongwumingcheng` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '宠物名称',
-  `riqi` datetime NULL DEFAULT NULL COMMENT '日期',
-  `sfsh` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '是否审核',
-  `shhf` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL COMMENT '审核回复',
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '领养' ROW_FORMAT = Dynamic;
+DROP TABLE "WENSON"."LINGYANG";
+CREATE TABLE "WENSON"."LINGYANG" (
+  "ID" NUMBER(20,0) VISIBLE NOT NULL,
+  "ADDTIME" DATE VISIBLE NOT NULL,
+  "YONGHUMING" NVARCHAR2(200) VISIBLE,
+  "XINGMING" NVARCHAR2(200) VISIBLE,
+  "CHONGWUBIANHAO" NVARCHAR2(200) VISIBLE,
+  "CHONGWUMINGCHENG" NVARCHAR2(200) VISIBLE,
+  "RIQI" DATE VISIBLE,
+  "SFSH" NVARCHAR2(200) VISIBLE,
+  "SHHF" NCLOB VISIBLE
+)
+LOGGING
+NOCOMPRESS
+PCTFREE 10
+INITRANS 1
+STORAGE (
+  INITIAL 65536 
+  NEXT 1048576 
+  MINEXTENTS 1
+  MAXEXTENTS 2147483645
+  BUFFER_POOL DEFAULT
+)
+PARALLEL 1
+NOCACHE
+DISABLE ROW MOVEMENT
+;
+COMMENT ON COLUMN "WENSON"."LINGYANG"."ID" IS '主键';
+COMMENT ON COLUMN "WENSON"."LINGYANG"."ADDTIME" IS '创建时间';
+COMMENT ON COLUMN "WENSON"."LINGYANG"."YONGHUMING" IS '用户名';
+COMMENT ON COLUMN "WENSON"."LINGYANG"."XINGMING" IS '姓名';
+COMMENT ON COLUMN "WENSON"."LINGYANG"."CHONGWUBIANHAO" IS '宠物编号';
+COMMENT ON COLUMN "WENSON"."LINGYANG"."CHONGWUMINGCHENG" IS '宠物名称';
+COMMENT ON COLUMN "WENSON"."LINGYANG"."RIQI" IS '日期';
+COMMENT ON COLUMN "WENSON"."LINGYANG"."SFSH" IS '是否审核';
+COMMENT ON COLUMN "WENSON"."LINGYANG"."SHHF" IS '审核回复';
+COMMENT ON TABLE "WENSON"."LINGYANG" IS '领养';
 
 -- ----------------------------
--- Records of lingyang
+-- Records of LINGYANG
 -- ----------------------------
-INSERT INTO `lingyang` VALUES (31, '2023-08-15 20:04:52', '用户1', '姓名1', '宠物编号1', '宠物名称1', '2023-08-15 20:04:52', '是', NULL);
-INSERT INTO `lingyang` VALUES (32, '2023-08-15 20:04:52', '用户2', '姓名2', '宠物编号2', '宠物名称2', '2023-08-15 20:04:52', '是', NULL);
-INSERT INTO `lingyang` VALUES (33, '2023-08-15 20:04:52', '用户3', '姓名3', '宠物编号3', '宠物名称3', '2023-08-15 20:04:52', '是', NULL);
-INSERT INTO `lingyang` VALUES (34, '2023-08-15 20:04:52', '用户4', '姓名4', '宠物编号4', '宠物名称4', '2023-08-15 20:04:52', '是', NULL);
-INSERT INTO `lingyang` VALUES (35, '2023-08-15 20:04:52', '用户5', '姓名5', '宠物编号5', '宠物名称5', '2023-08-15 20:04:52', '是', NULL);
-INSERT INTO `lingyang` VALUES (36, '2023-08-15 20:04:52', '用户6', '姓名6', '宠物编号6', '宠物名称6', '2023-08-15 20:04:52', '是', NULL);
-INSERT INTO `lingyang` VALUES (1618488939796, '2023-08-15 20:15:39', '01', '01', '宠物编号2', '宠物名称2', '2023-08-15 20:15:38', '是', '好好待它');
-INSERT INTO `lingyang` VALUES (1694410433657, '2023-09-11 13:33:52', '用户1', '姓名1', '宠物编号3', '宠物名称3', '2023-09-11 13:33:48', '否', NULL);
-INSERT INTO `lingyang` VALUES (1701763931885, '2023-12-05 16:12:10', '01', '01', '1701762376908', '贵妇犬', '2023-12-05 16:12:08', NULL, NULL);
+INSERT INTO "WENSON"."LINGYANG" VALUES ('31', TO_DATE('2023-08-15 20:04:52', 'SYYYY-MM-DD HH24:MI:SS'), '用户1', '姓名1', '宠物编号1', '宠物名称1', TO_DATE('2023-08-15 20:04:52', 'SYYYY-MM-DD HH24:MI:SS'), '是', NULL);
+INSERT INTO "WENSON"."LINGYANG" VALUES ('32', TO_DATE('2023-08-15 20:04:52', 'SYYYY-MM-DD HH24:MI:SS'), '用户2', '姓名2', '宠物编号2', '宠物名称2', TO_DATE('2023-08-15 20:04:52', 'SYYYY-MM-DD HH24:MI:SS'), '是', NULL);
+INSERT INTO "WENSON"."LINGYANG" VALUES ('33', TO_DATE('2023-08-15 20:04:52', 'SYYYY-MM-DD HH24:MI:SS'), '用户3', '姓名3', '宠物编号3', '宠物名称3', TO_DATE('2023-08-15 20:04:52', 'SYYYY-MM-DD HH24:MI:SS'), '是', NULL);
+INSERT INTO "WENSON"."LINGYANG" VALUES ('34', TO_DATE('2023-08-15 20:04:52', 'SYYYY-MM-DD HH24:MI:SS'), '用户4', '姓名4', '宠物编号4', '宠物名称4', TO_DATE('2023-08-15 20:04:52', 'SYYYY-MM-DD HH24:MI:SS'), '是', NULL);
+INSERT INTO "WENSON"."LINGYANG" VALUES ('35', TO_DATE('2023-08-15 20:04:52', 'SYYYY-MM-DD HH24:MI:SS'), '用户5', '姓名5', '宠物编号5', '宠物名称5', TO_DATE('2023-08-15 20:04:52', 'SYYYY-MM-DD HH24:MI:SS'), '是', NULL);
+INSERT INTO "WENSON"."LINGYANG" VALUES ('36', TO_DATE('2023-08-15 20:04:52', 'SYYYY-MM-DD HH24:MI:SS'), '用户6', '姓名6', '宠物编号6', '宠物名称6', TO_DATE('2023-08-15 20:04:52', 'SYYYY-MM-DD HH24:MI:SS'), '是', NULL);
+INSERT INTO "WENSON"."LINGYANG" VALUES ('1618488939796', TO_DATE('2023-08-15 20:15:39', 'SYYYY-MM-DD HH24:MI:SS'), '01', '01', '宠物编号2', '宠物名称2', TO_DATE('2023-08-15 20:15:38', 'SYYYY-MM-DD HH24:MI:SS'), '是', '好好待它');
+INSERT INTO "WENSON"."LINGYANG" VALUES ('1694410433657', TO_DATE('2023-09-11 13:33:52', 'SYYYY-MM-DD HH24:MI:SS'), '用户1', '姓名1', '宠物编号3', '宠物名称3', TO_DATE('2023-09-11 13:33:48', 'SYYYY-MM-DD HH24:MI:SS'), '否', NULL);
+INSERT INTO "WENSON"."LINGYANG" VALUES ('1701763931885', TO_DATE('2023-12-05 16:12:10', 'SYYYY-MM-DD HH24:MI:SS'), '01', '01', '1701762376908', '贵妇犬', TO_DATE('2023-12-05 16:12:08', 'SYYYY-MM-DD HH24:MI:SS'), NULL, NULL);
 
 -- ----------------------------
--- Table structure for news
+-- Table structure for NEWS
 -- ----------------------------
-DROP TABLE IF EXISTS `news`;
-CREATE TABLE `news`  (
-  `id` decimal(20, 0) NOT NULL COMMENT '主键',
-  `addtime` datetime NOT NULL COMMENT '创建时间',
-  `title` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '标题',
-  `introduction` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL COMMENT '简介',
-  `picture` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '图片',
-  `content` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '内容',
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '网站公告' ROW_FORMAT = Dynamic;
+DROP TABLE "WENSON"."NEWS";
+CREATE TABLE "WENSON"."NEWS" (
+  "ID" NUMBER(20,0) VISIBLE NOT NULL,
+  "ADDTIME" DATE VISIBLE NOT NULL,
+  "TITLE" NVARCHAR2(200) VISIBLE NOT NULL,
+  "INTRODUCTION" NCLOB VISIBLE,
+  "PICTURE" NVARCHAR2(200) VISIBLE NOT NULL,
+  "CONTENT" NCLOB VISIBLE NOT NULL
+)
+LOGGING
+NOCOMPRESS
+PCTFREE 10
+INITRANS 1
+STORAGE (
+  INITIAL 65536 
+  NEXT 1048576 
+  MINEXTENTS 1
+  MAXEXTENTS 2147483645
+  BUFFER_POOL DEFAULT
+)
+PARALLEL 1
+NOCACHE
+DISABLE ROW MOVEMENT
+;
+COMMENT ON COLUMN "WENSON"."NEWS"."ID" IS '主键';
+COMMENT ON COLUMN "WENSON"."NEWS"."ADDTIME" IS '创建时间';
+COMMENT ON COLUMN "WENSON"."NEWS"."TITLE" IS '标题';
+COMMENT ON COLUMN "WENSON"."NEWS"."INTRODUCTION" IS '简介';
+COMMENT ON COLUMN "WENSON"."NEWS"."PICTURE" IS '图片';
+COMMENT ON COLUMN "WENSON"."NEWS"."CONTENT" IS '内容';
+COMMENT ON TABLE "WENSON"."NEWS" IS '网站公告';
 
 -- ----------------------------
--- Records of news
+-- Records of NEWS
 -- ----------------------------
-INSERT INTO `news` VALUES (101, '2023-12-05 20:04:52', '标题1', '简介1', 'http://localhost:8080/petHospital/upload/1701763734456.png', '<p>内容1</p>');
-INSERT INTO `news` VALUES (102, '2023-12-05 20:04:52', '标题2', '简介2', 'http://localhost:8080/petHospital/upload/1701763744981.png', '<p>内容2</p>');
-INSERT INTO `news` VALUES (103, '2023-12-05 20:04:52', '标题3', '简介3', 'http://localhost:8080/petHospital/upload/1701763754922.png', '<p>内容3</p>');
-INSERT INTO `news` VALUES (104, '2023-12-05 20:04:52', '标题4', '简介4', 'http://localhost:8080/petHospital/upload/1701763770501.png', '<p>内容4</p>');
+INSERT INTO "WENSON"."NEWS" VALUES ('101', TO_DATE('2023-12-05 20:04:52', 'SYYYY-MM-DD HH24:MI:SS'), '标题1', '简介1', 'http://localhost:8080/petHospital/upload/1701763734456.png', '<p>内容1</p>');
+INSERT INTO "WENSON"."NEWS" VALUES ('102', TO_DATE('2023-12-05 20:04:52', 'SYYYY-MM-DD HH24:MI:SS'), '标题2', '简介2', 'http://localhost:8080/petHospital/upload/1701763744981.png', '<p>内容2</p>');
+INSERT INTO "WENSON"."NEWS" VALUES ('103', TO_DATE('2023-12-05 20:04:52', 'SYYYY-MM-DD HH24:MI:SS'), '标题3', '简介3', 'http://localhost:8080/petHospital/upload/1701763754922.png', '<p>内容3</p>');
+INSERT INTO "WENSON"."NEWS" VALUES ('104', TO_DATE('2023-12-05 20:04:52', 'SYYYY-MM-DD HH24:MI:SS'), '标题4', '简介4', 'http://localhost:8080/petHospital/upload/1701763770501.png', '<p>内容4</p>');
 
 -- ----------------------------
--- Table structure for storeup
+-- Table structure for STOREUP
 -- ----------------------------
-DROP TABLE IF EXISTS `storeup`;
-CREATE TABLE `storeup`  (
-  `id` decimal(20, 0) NOT NULL COMMENT '主键',
-  `addtime` datetime NOT NULL COMMENT '创建时间',
-  `userid` decimal(20, 0) NOT NULL COMMENT '用户id',
-  `refid` decimal(20, 0) NULL DEFAULT NULL COMMENT '收藏id',
-  `tablename` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '表名',
-  `name` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '收藏名称',
-  `picture` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '收藏图片',
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '收藏表' ROW_FORMAT = Dynamic;
+DROP TABLE "WENSON"."STOREUP";
+CREATE TABLE "WENSON"."STOREUP" (
+  "ID" NUMBER(20,0) VISIBLE NOT NULL,
+  "ADDTIME" DATE VISIBLE NOT NULL,
+  "USERID" NUMBER(20,0) VISIBLE NOT NULL,
+  "REFID" NUMBER(20,0) VISIBLE,
+  "TABLENAME" NVARCHAR2(200) VISIBLE,
+  "NAME" NVARCHAR2(200) VISIBLE NOT NULL,
+  "PICTURE" NVARCHAR2(200) VISIBLE NOT NULL
+)
+LOGGING
+NOCOMPRESS
+PCTFREE 10
+INITRANS 1
+STORAGE (
+  INITIAL 65536 
+  NEXT 1048576 
+  MINEXTENTS 1
+  MAXEXTENTS 2147483645
+  BUFFER_POOL DEFAULT
+)
+PARALLEL 1
+NOCACHE
+DISABLE ROW MOVEMENT
+;
+COMMENT ON COLUMN "WENSON"."STOREUP"."ID" IS '主键';
+COMMENT ON COLUMN "WENSON"."STOREUP"."ADDTIME" IS '创建时间';
+COMMENT ON COLUMN "WENSON"."STOREUP"."USERID" IS '用户id';
+COMMENT ON COLUMN "WENSON"."STOREUP"."REFID" IS '收藏id';
+COMMENT ON COLUMN "WENSON"."STOREUP"."TABLENAME" IS '表名';
+COMMENT ON COLUMN "WENSON"."STOREUP"."NAME" IS '收藏名称';
+COMMENT ON COLUMN "WENSON"."STOREUP"."PICTURE" IS '收藏图片';
+COMMENT ON TABLE "WENSON"."STOREUP" IS '收藏表';
 
 -- ----------------------------
--- Records of storeup
+-- Records of STOREUP
 -- ----------------------------
-INSERT INTO `storeup` VALUES (1618489031694, '2023-08-15 20:17:10', 1618488891531, 21, 'chongwuxinxi', '宠物名称1', 'http://localhost:8080/petHospital/upload/1701762635188.png');
-INSERT INTO `storeup` VALUES (1694410424268, '2023-09-11 13:33:43', 11, 23, 'chongwuxinxi', '宠物名称3', 'http://localhost:8080/petHospital/upload/chongwuxinxi_tupian3.jpg');
-INSERT INTO `storeup` VALUES (1701763925669, '2023-12-05 16:12:05', 1618488891531, 1701762407786, 'chongwuxinxi', '贵妇犬', 'http://localhost:8080/petHospital/upload/1701762389654.png');
+INSERT INTO "WENSON"."STOREUP" VALUES ('1618489031694', TO_DATE('2023-08-15 20:17:10', 'SYYYY-MM-DD HH24:MI:SS'), '1618488891531', '21', 'chongwuxinxi', '宠物名称1', 'http://localhost:8080/petHospital/upload/1701762635188.png');
+INSERT INTO "WENSON"."STOREUP" VALUES ('1694410424268', TO_DATE('2023-09-11 13:33:43', 'SYYYY-MM-DD HH24:MI:SS'), '11', '23', 'chongwuxinxi', '宠物名称3', 'http://localhost:8080/petHospital/upload/chongwuxinxi_tupian3.jpg');
+INSERT INTO "WENSON"."STOREUP" VALUES ('1701763925669', TO_DATE('2023-12-05 16:12:05', 'SYYYY-MM-DD HH24:MI:SS'), '1618488891531', '1701762407786', 'chongwuxinxi', '贵妇犬', 'http://localhost:8080/petHospital/upload/1701762389654.png');
 
 -- ----------------------------
--- Table structure for token
+-- Table structure for TOKEN
 -- ----------------------------
-DROP TABLE IF EXISTS `token`;
-CREATE TABLE `token`  (
-  `id` int NOT NULL AUTO_INCREMENT COMMENT '主键',
-  `userid` decimal(20, 0) NOT NULL COMMENT '用户id',
-  `username` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '用户名',
-  `tablename` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '表名',
-  `role` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '角色',
-  `token` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '密码',
-  `addtime` datetime NOT NULL COMMENT '新增时间',
-  `expiratedtime` datetime NOT NULL COMMENT '过期时间',
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = 'token表' ROW_FORMAT = Dynamic;
+DROP TABLE "WENSON"."TOKEN";
+CREATE TABLE "WENSON"."TOKEN" (
+  "ID" NUMBER(20,0) VISIBLE NOT NULL,
+  "USERID" NUMBER(20,0) VISIBLE NOT NULL,
+  "USERNAME" NVARCHAR2(100) VISIBLE NOT NULL,
+  "TABLENAME" NVARCHAR2(100) VISIBLE,
+  "ROLE" NVARCHAR2(100) VISIBLE,
+  "TOKEN" NVARCHAR2(200) VISIBLE NOT NULL,
+  "ADDTIME" DATE VISIBLE NOT NULL,
+  "EXPIRATEDTIME" DATE VISIBLE NOT NULL
+)
+LOGGING
+NOCOMPRESS
+PCTFREE 10
+INITRANS 1
+STORAGE (
+  INITIAL 65536 
+  NEXT 1048576 
+  MINEXTENTS 1
+  MAXEXTENTS 2147483645
+  BUFFER_POOL DEFAULT
+)
+PARALLEL 1
+NOCACHE
+DISABLE ROW MOVEMENT
+;
+COMMENT ON COLUMN "WENSON"."TOKEN"."ID" IS '主键';
+COMMENT ON COLUMN "WENSON"."TOKEN"."USERID" IS '用户id';
+COMMENT ON COLUMN "WENSON"."TOKEN"."USERNAME" IS '用户名';
+COMMENT ON COLUMN "WENSON"."TOKEN"."TABLENAME" IS '表名';
+COMMENT ON COLUMN "WENSON"."TOKEN"."ROLE" IS '角色';
+COMMENT ON COLUMN "WENSON"."TOKEN"."TOKEN" IS '密码';
+COMMENT ON COLUMN "WENSON"."TOKEN"."ADDTIME" IS '新增时间';
+COMMENT ON COLUMN "WENSON"."TOKEN"."EXPIRATEDTIME" IS '过期时间';
+COMMENT ON TABLE "WENSON"."TOKEN" IS 'token表';
 
 -- ----------------------------
--- Records of token
+-- Records of TOKEN
 -- ----------------------------
-INSERT INTO `token` VALUES (1, 1618488891531, '01', 'yonghu', '用户', 'zfch41fa989wm7qn62nd2aqdclq4sokp', '2023-08-15 20:18:47', '2023-12-05 18:37:53');
-INSERT INTO `token` VALUES (2, 1, 'admin', 'users', '管理员', '8zi2z7u8y2vkoxlnxejuricd6jfkq3d3', '2023-08-15 20:18:47', '2023-12-05 18:38:03');
-INSERT INTO `token` VALUES (3, 11, '用户1', 'yonghu', '用户', 'i2q07qcw80zb5glqk7dc1a472b8ha6s0', '2023-09-11 13:29:20', '2023-09-11 14:33:38');
+INSERT INTO "WENSON"."TOKEN" VALUES ('1', '1618488891531', '01', 'yonghu', '用户', 'bgozdhko9l8y34ma34of18zbmrvomn15', TO_DATE('2023-08-15 20:18:47', 'SYYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-12-05 17:50:14', 'SYYYY-MM-DD HH24:MI:SS'));
+INSERT INTO "WENSON"."TOKEN" VALUES ('2', '1', 'admin', 'users', '管理员', 'b9ohzy2l35rcaykiirbc8o2rgxts61xp', TO_DATE('2023-08-15 20:18:47', 'SYYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-12-05 17:13:41', 'SYYYY-MM-DD HH24:MI:SS'));
+INSERT INTO "WENSON"."TOKEN" VALUES ('3', '11', '用户1', 'yonghu', '用户', 'i2q07qcw80zb5glqk7dc1a472b8ha6s0', TO_DATE('2023-09-11 13:29:20', 'SYYYY-MM-DD HH24:MI:SS'), TO_DATE('2023-09-11 14:33:38', 'SYYYY-MM-DD HH24:MI:SS'));
 
 -- ----------------------------
--- Table structure for users
+-- Table structure for USERS
 -- ----------------------------
-DROP TABLE IF EXISTS `users`;
-CREATE TABLE `users`  (
-  `id` decimal(20, 0) NOT NULL COMMENT '主键',
-  `username` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '用户名',
-  `password` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '密码',
-  `role` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '角色',
-  `addtime` datetime NOT NULL COMMENT '新增时间',
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '用户表' ROW_FORMAT = Dynamic;
+DROP TABLE "WENSON"."USERS";
+CREATE TABLE "WENSON"."USERS" (
+  "ID" NUMBER(20,0) VISIBLE NOT NULL,
+  "USERNAME" NVARCHAR2(100) VISIBLE NOT NULL,
+  "PASSWORD" NVARCHAR2(100) VISIBLE NOT NULL,
+  "ROLE" NVARCHAR2(100) VISIBLE,
+  "ADDTIME" DATE VISIBLE NOT NULL
+)
+LOGGING
+NOCOMPRESS
+PCTFREE 10
+INITRANS 1
+STORAGE (
+  INITIAL 65536 
+  NEXT 1048576 
+  MINEXTENTS 1
+  MAXEXTENTS 2147483645
+  BUFFER_POOL DEFAULT
+)
+PARALLEL 1
+NOCACHE
+DISABLE ROW MOVEMENT
+;
+COMMENT ON COLUMN "WENSON"."USERS"."ID" IS '主键';
+COMMENT ON COLUMN "WENSON"."USERS"."USERNAME" IS '用户名';
+COMMENT ON COLUMN "WENSON"."USERS"."PASSWORD" IS '密码';
+COMMENT ON COLUMN "WENSON"."USERS"."ROLE" IS '角色';
+COMMENT ON COLUMN "WENSON"."USERS"."ADDTIME" IS '新增时间';
+COMMENT ON TABLE "WENSON"."USERS" IS '用户表';
 
 -- ----------------------------
--- Records of users
+-- Records of USERS
 -- ----------------------------
-INSERT INTO `users` VALUES (1, 'admin', 'admin', '管理员', '2023-08-15 20:04:52');
+INSERT INTO "WENSON"."USERS" VALUES ('1', 'admin', 'admin', '管理员', TO_DATE('2023-08-15 20:04:52', 'SYYYY-MM-DD HH24:MI:SS'));
 
 -- ----------------------------
--- Table structure for yishengxinxi
+-- Table structure for YISHENGXINXI
 -- ----------------------------
-DROP TABLE IF EXISTS `yishengxinxi`;
-CREATE TABLE `yishengxinxi`  (
-  `id` decimal(20, 0) NOT NULL COMMENT '主键',
-  `addtime` datetime NOT NULL COMMENT '创建时间',
-  `yishengxingming` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '医生姓名',
-  `zhicheng` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '职称',
-  `xingbie` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '性别',
-  `yishengjianjie` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL COMMENT '医生简介',
-  `lianxidianhua` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '联系电话',
-  `youxiang` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '邮箱',
-  `zhaopian` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '照片',
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '医生信息' ROW_FORMAT = Dynamic;
+DROP TABLE "WENSON"."YISHENGXINXI";
+CREATE TABLE "WENSON"."YISHENGXINXI" (
+  "ID" NUMBER(20,0) VISIBLE NOT NULL,
+  "ADDTIME" DATE VISIBLE NOT NULL,
+  "YISHENGXINGMING" NVARCHAR2(200) VISIBLE,
+  "ZHICHENG" NVARCHAR2(200) VISIBLE,
+  "XINGBIE" NVARCHAR2(200) VISIBLE,
+  "YISHENGJIANJIE" NCLOB VISIBLE,
+  "LIANXIDIANHUA" NVARCHAR2(200) VISIBLE,
+  "YOUXIANG" NVARCHAR2(200) VISIBLE,
+  "ZHAOPIAN" NVARCHAR2(200) VISIBLE
+)
+LOGGING
+NOCOMPRESS
+PCTFREE 10
+INITRANS 1
+STORAGE (
+  INITIAL 65536 
+  NEXT 1048576 
+  MINEXTENTS 1
+  MAXEXTENTS 2147483645
+  BUFFER_POOL DEFAULT
+)
+PARALLEL 1
+NOCACHE
+DISABLE ROW MOVEMENT
+;
+COMMENT ON COLUMN "WENSON"."YISHENGXINXI"."ID" IS '主键';
+COMMENT ON COLUMN "WENSON"."YISHENGXINXI"."ADDTIME" IS '创建时间';
+COMMENT ON COLUMN "WENSON"."YISHENGXINXI"."YISHENGXINGMING" IS '医生姓名';
+COMMENT ON COLUMN "WENSON"."YISHENGXINXI"."ZHICHENG" IS '职称';
+COMMENT ON COLUMN "WENSON"."YISHENGXINXI"."XINGBIE" IS '性别';
+COMMENT ON COLUMN "WENSON"."YISHENGXINXI"."YISHENGJIANJIE" IS '医生简介';
+COMMENT ON COLUMN "WENSON"."YISHENGXINXI"."LIANXIDIANHUA" IS '联系电话';
+COMMENT ON COLUMN "WENSON"."YISHENGXINXI"."YOUXIANG" IS '邮箱';
+COMMENT ON COLUMN "WENSON"."YISHENGXINXI"."ZHAOPIAN" IS '照片';
+COMMENT ON TABLE "WENSON"."YISHENGXINXI" IS '医生信息';
 
 -- ----------------------------
--- Records of yishengxinxi
+-- Records of YISHENGXINXI
 -- ----------------------------
-INSERT INTO `yishengxinxi` VALUES (41, '2023-08-15 20:04:52', '医生姓名1', '职称1', '女', '<p>医生简介1</p>', '13823888881', '773890001@qq.com', 'http://localhost:8080/petHospital/upload/1701626588368.png');
-INSERT INTO `yishengxinxi` VALUES (43, '2023-08-15 20:04:52', '医生姓名3', '职称3', '女', '<p>医生简介3</p>', '13823888883', '773890003@qq.com', 'http://localhost:8080/petHospital/upload/1701626653029.png');
-INSERT INTO `yishengxinxi` VALUES (45, '2023-08-15 20:04:52', '医生姓名5', '职称5', '女', '<p>医生简介5</p>', '13823888885', '773890005@qq.com', 'http://localhost:8080/petHospital/upload/1701626665490.png');
-INSERT INTO `yishengxinxi` VALUES (46, '2023-08-15 20:04:52', '医生姓名6', '职称6', '女', '<p>医生简介6</p>', '13823888886', '773890006@qq.com', 'http://localhost:8080/petHospital/upload/1701626677314.png');
+INSERT INTO "WENSON"."YISHENGXINXI" VALUES ('41', TO_DATE('2023-08-15 20:04:52', 'SYYYY-MM-DD HH24:MI:SS'), '医生姓名1', '职称1', '女', '<p>医生简介1</p>', '13823888881', '773890001@qq.com', 'http://localhost:8080/petHospital/upload/1701626588368.png');
+INSERT INTO "WENSON"."YISHENGXINXI" VALUES ('43', TO_DATE('2023-08-15 20:04:52', 'SYYYY-MM-DD HH24:MI:SS'), '医生姓名3', '职称3', '女', '<p>医生简介3</p>', '13823888883', '773890003@qq.com', 'http://localhost:8080/petHospital/upload/1701626653029.png');
+INSERT INTO "WENSON"."YISHENGXINXI" VALUES ('45', TO_DATE('2023-08-15 20:04:52', 'SYYYY-MM-DD HH24:MI:SS'), '医生姓名5', '职称5', '女', '<p>医生简介5</p>', '13823888885', '773890005@qq.com', 'http://localhost:8080/petHospital/upload/1701626665490.png');
+INSERT INTO "WENSON"."YISHENGXINXI" VALUES ('46', TO_DATE('2023-08-15 20:04:52', 'SYYYY-MM-DD HH24:MI:SS'), '医生姓名6', '职称6', '女', '<p>医生简介6</p>', '13823888886', '773890006@qq.com', 'http://localhost:8080/petHospital/upload/1701626677314.png');
 
 -- ----------------------------
--- Table structure for yonghu
+-- Table structure for YONGHU
 -- ----------------------------
-DROP TABLE IF EXISTS `yonghu`;
-CREATE TABLE `yonghu`  (
-  `id` decimal(20, 0) NOT NULL COMMENT '主键',
-  `addtime` datetime NOT NULL COMMENT '创建时间',
-  `yonghuming` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '用户名',
-  `mima` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '密码',
-  `xingming` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '姓名',
-  `xingbie` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '性别',
-  `nianling` decimal(11, 0) NULL DEFAULT NULL COMMENT '年龄',
-  `shouji` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '手机',
-  `youxiang` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '邮箱',
-  `touxiang` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '头像',
-  PRIMARY KEY (`id`) USING BTREE,
-  UNIQUE INDEX `yonghuming`(`yonghuming` ASC) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '用户' ROW_FORMAT = Dynamic;
+DROP TABLE "WENSON"."YONGHU";
+CREATE TABLE "WENSON"."YONGHU" (
+  "ID" NUMBER(20,0) VISIBLE NOT NULL,
+  "ADDTIME" DATE VISIBLE NOT NULL,
+  "YONGHUMING" NVARCHAR2(200) VISIBLE NOT NULL,
+  "MIMA" NVARCHAR2(200) VISIBLE NOT NULL,
+  "XINGMING" NVARCHAR2(200) VISIBLE NOT NULL,
+  "XINGBIE" NVARCHAR2(200) VISIBLE,
+  "NIANLING" NUMBER(11,0) VISIBLE,
+  "SHOUJI" NVARCHAR2(200) VISIBLE,
+  "YOUXIANG" NVARCHAR2(200) VISIBLE,
+  "TOUXIANG" NVARCHAR2(200) VISIBLE
+)
+LOGGING
+NOCOMPRESS
+PCTFREE 10
+INITRANS 1
+STORAGE (
+  INITIAL 65536 
+  NEXT 1048576 
+  MINEXTENTS 1
+  MAXEXTENTS 2147483645
+  BUFFER_POOL DEFAULT
+)
+PARALLEL 1
+NOCACHE
+DISABLE ROW MOVEMENT
+;
+COMMENT ON COLUMN "WENSON"."YONGHU"."ID" IS '主键';
+COMMENT ON COLUMN "WENSON"."YONGHU"."ADDTIME" IS '创建时间';
+COMMENT ON COLUMN "WENSON"."YONGHU"."YONGHUMING" IS '用户名';
+COMMENT ON COLUMN "WENSON"."YONGHU"."MIMA" IS '密码';
+COMMENT ON COLUMN "WENSON"."YONGHU"."XINGMING" IS '姓名';
+COMMENT ON COLUMN "WENSON"."YONGHU"."XINGBIE" IS '性别';
+COMMENT ON COLUMN "WENSON"."YONGHU"."NIANLING" IS '年龄';
+COMMENT ON COLUMN "WENSON"."YONGHU"."SHOUJI" IS '手机';
+COMMENT ON COLUMN "WENSON"."YONGHU"."YOUXIANG" IS '邮箱';
+COMMENT ON COLUMN "WENSON"."YONGHU"."TOUXIANG" IS '头像';
+COMMENT ON TABLE "WENSON"."YONGHU" IS '用户';
 
 -- ----------------------------
--- Records of yonghu
+-- Records of YONGHU
 -- ----------------------------
-INSERT INTO `yonghu` VALUES (11, '2023-08-15 20:04:52', '用户1', '123456', '姓名1', '女', 1, '13823888881', '773890001@qq.com', 'http://localhost:8080/petHospital/upload/1701626757524.png');
-INSERT INTO `yonghu` VALUES (12, '2023-08-15 20:04:52', '用户2', '123456', '姓名2', '男', 2, '13823888882', '773890002@qq.com', 'http://localhost:8080/petHospital/upload/1701626767134.png');
-INSERT INTO `yonghu` VALUES (13, '2023-08-15 20:04:52', '用户3', '123456', '姓名3', '男', 3, '13823888883', '773890003@qq.com', 'http://localhost:8080/petHospital/upload/1701626776245.png');
-INSERT INTO `yonghu` VALUES (14, '2023-08-15 20:04:52', '用户4', '123456', '姓名4', '男', 4, '13823888884', '773890004@qq.com', 'http://localhost:8080/petHospital/upload/1701626786814.png');
-INSERT INTO `yonghu` VALUES (15, '2023-08-15 20:04:52', '用户5', '123456', '姓名5', '男', 5, '13823888885', '773890005@qq.com', 'http://localhost:8080/petHospital/upload/1701626795891.png');
-INSERT INTO `yonghu` VALUES (16, '2023-08-15 20:04:52', '用户6', '123456', '姓名6', '男', 6, '13823888886', '773890006@qq.com', 'http://localhost:8080/petHospital/upload/1701626807915.png');
-INSERT INTO `yonghu` VALUES (1618488891531, '2023-08-15 20:14:51', '01', '01', '01', '女', 33, NULL, NULL, 'http://localhost:8080/petHospital/upload/1701626817220.png');
-INSERT INTO `yonghu` VALUES (1701764322363, '2023-12-05 16:18:42', '02', '02', '02', '男', 18, NULL, NULL, NULL);
-INSERT INTO `yonghu` VALUES (1701769093163, '2023-12-05 17:38:13', '1', '1', '1', '', NULL, '', '', '');
+INSERT INTO "WENSON"."YONGHU" VALUES ('11', TO_DATE('2023-08-15 20:04:52', 'SYYYY-MM-DD HH24:MI:SS'), '用户1', '123456', '姓名1', '女', '1', '13823888881', '773890001@qq.com', 'http://localhost:8080/petHospital/upload/1701626757524.png');
+INSERT INTO "WENSON"."YONGHU" VALUES ('12', TO_DATE('2023-08-15 20:04:52', 'SYYYY-MM-DD HH24:MI:SS'), '用户2', '123456', '姓名2', '男', '2', '13823888882', '773890002@qq.com', 'http://localhost:8080/petHospital/upload/1701626767134.png');
+INSERT INTO "WENSON"."YONGHU" VALUES ('13', TO_DATE('2023-08-15 20:04:52', 'SYYYY-MM-DD HH24:MI:SS'), '用户3', '123456', '姓名3', '男', '3', '13823888883', '773890003@qq.com', 'http://localhost:8080/petHospital/upload/1701626776245.png');
+INSERT INTO "WENSON"."YONGHU" VALUES ('14', TO_DATE('2023-08-15 20:04:52', 'SYYYY-MM-DD HH24:MI:SS'), '用户4', '123456', '姓名4', '男', '4', '13823888884', '773890004@qq.com', 'http://localhost:8080/petHospital/upload/1701626786814.png');
+INSERT INTO "WENSON"."YONGHU" VALUES ('15', TO_DATE('2023-08-15 20:04:52', 'SYYYY-MM-DD HH24:MI:SS'), '用户5', '123456', '姓名5', '男', '5', '13823888885', '773890005@qq.com', 'http://localhost:8080/petHospital/upload/1701626795891.png');
+INSERT INTO "WENSON"."YONGHU" VALUES ('16', TO_DATE('2023-08-15 20:04:52', 'SYYYY-MM-DD HH24:MI:SS'), '用户6', '123456', '姓名6', '男', '6', '13823888886', '773890006@qq.com', 'http://localhost:8080/petHospital/upload/1701626807915.png');
+INSERT INTO "WENSON"."YONGHU" VALUES ('1618488891531', TO_DATE('2023-08-15 20:14:51', 'SYYYY-MM-DD HH24:MI:SS'), '01', '01', '01', '女', '33', NULL, NULL, 'http://localhost:8080/petHospital/upload/1701626817220.png');
+INSERT INTO "WENSON"."YONGHU" VALUES ('1701764322363', TO_DATE('2023-12-05 16:18:42', 'SYYYY-MM-DD HH24:MI:SS'), '02', '02', '02', '男', '18', NULL, NULL, NULL);
 
-SET FOREIGN_KEY_CHECKS = 1;
+-- ----------------------------
+-- Primary Key structure for table CHONGWUXINXI
+-- ----------------------------
+ALTER TABLE "WENSON"."CHONGWUXINXI" ADD CONSTRAINT "SYS_C007645" PRIMARY KEY ("ID");
+
+-- ----------------------------
+-- Checks structure for table CHONGWUXINXI
+-- ----------------------------
+ALTER TABLE "WENSON"."CHONGWUXINXI" ADD CONSTRAINT "SYS_C007599" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
+ALTER TABLE "WENSON"."CHONGWUXINXI" ADD CONSTRAINT "SYS_C007600" CHECK ("ADDTIME" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
+ALTER TABLE "WENSON"."CHONGWUXINXI" ADD CONSTRAINT "SYS_C007601" CHECK ("CHONGWUMINGCHENG" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
+ALTER TABLE "WENSON"."CHONGWUXINXI" ADD CONSTRAINT "SYS_C007602" CHECK ("PINZHONG" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
+
+-- ----------------------------
+-- Indexes structure for table CHONGWUXINXI
+-- ----------------------------
+CREATE UNIQUE INDEX "WENSON"."CHONGWUBIANHAO"
+  ON "WENSON"."CHONGWUXINXI" ("CHONGWUBIANHAO" ASC)
+  LOGGING
+  VISIBLE
+PCTFREE 10
+INITRANS 2
+STORAGE (
+  INITIAL 65536 
+  NEXT 1048576 
+  MINEXTENTS 1
+  MAXEXTENTS 2147483645
+  BUFFER_POOL DEFAULT
+  FLASH_CACHE DEFAULT
+)
+   USABLE;
+
+-- ----------------------------
+-- Primary Key structure for table CONFIG
+-- ----------------------------
+ALTER TABLE "WENSON"."CONFIG" ADD CONSTRAINT "SYS_C007643" PRIMARY KEY ("ID");
+
+-- ----------------------------
+-- Checks structure for table CONFIG
+-- ----------------------------
+ALTER TABLE "WENSON"."CONFIG" ADD CONSTRAINT "SYS_C007597" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
+ALTER TABLE "WENSON"."CONFIG" ADD CONSTRAINT "SYS_C007598" CHECK ("NAME" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
+
+-- ----------------------------
+-- Primary Key structure for table FORUM
+-- ----------------------------
+ALTER TABLE "WENSON"."FORUM" ADD CONSTRAINT "SYS_C007644" PRIMARY KEY ("ID");
+
+-- ----------------------------
+-- Checks structure for table FORUM
+-- ----------------------------
+ALTER TABLE "WENSON"."FORUM" ADD CONSTRAINT "SYS_C007606" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
+ALTER TABLE "WENSON"."FORUM" ADD CONSTRAINT "SYS_C007607" CHECK ("ADDTIME" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
+ALTER TABLE "WENSON"."FORUM" ADD CONSTRAINT "SYS_C007608" CHECK ("CONTENT" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
+ALTER TABLE "WENSON"."FORUM" ADD CONSTRAINT "SYS_C007609" CHECK ("USERID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
+
+-- ----------------------------
+-- Primary Key structure for table GUAHAOYUYUE
+-- ----------------------------
+ALTER TABLE "WENSON"."GUAHAOYUYUE" ADD CONSTRAINT "SYS_C007646" PRIMARY KEY ("ID");
+
+-- ----------------------------
+-- Checks structure for table GUAHAOYUYUE
+-- ----------------------------
+ALTER TABLE "WENSON"."GUAHAOYUYUE" ADD CONSTRAINT "SYS_C007603" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
+ALTER TABLE "WENSON"."GUAHAOYUYUE" ADD CONSTRAINT "SYS_C007604" CHECK ("ADDTIME" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
+ALTER TABLE "WENSON"."GUAHAOYUYUE" ADD CONSTRAINT "SYS_C007605" CHECK ("YONGHUMING" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
+
+-- ----------------------------
+-- Primary Key structure for table JIYANG
+-- ----------------------------
+ALTER TABLE "WENSON"."JIYANG" ADD CONSTRAINT "SYS_C007648" PRIMARY KEY ("ID");
+
+-- ----------------------------
+-- Checks structure for table JIYANG
+-- ----------------------------
+ALTER TABLE "WENSON"."JIYANG" ADD CONSTRAINT "SYS_C007619" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
+ALTER TABLE "WENSON"."JIYANG" ADD CONSTRAINT "SYS_C007620" CHECK ("ADDTIME" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
+
+-- ----------------------------
+-- Primary Key structure for table JIYANGJIEGUO
+-- ----------------------------
+ALTER TABLE "WENSON"."JIYANGJIEGUO" ADD CONSTRAINT "SYS_C007650" PRIMARY KEY ("ID");
+
+-- ----------------------------
+-- Checks structure for table JIYANGJIEGUO
+-- ----------------------------
+ALTER TABLE "WENSON"."JIYANGJIEGUO" ADD CONSTRAINT "SYS_C007617" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
+ALTER TABLE "WENSON"."JIYANGJIEGUO" ADD CONSTRAINT "SYS_C007618" CHECK ("ADDTIME" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
+
+-- ----------------------------
+-- Primary Key structure for table LINGYANG
+-- ----------------------------
+ALTER TABLE "WENSON"."LINGYANG" ADD CONSTRAINT "SYS_C007649" PRIMARY KEY ("ID");
+
+-- ----------------------------
+-- Checks structure for table LINGYANG
+-- ----------------------------
+ALTER TABLE "WENSON"."LINGYANG" ADD CONSTRAINT "SYS_C007610" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
+ALTER TABLE "WENSON"."LINGYANG" ADD CONSTRAINT "SYS_C007611" CHECK ("ADDTIME" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
+
+-- ----------------------------
+-- Primary Key structure for table NEWS
+-- ----------------------------
+ALTER TABLE "WENSON"."NEWS" ADD CONSTRAINT "SYS_C007647" PRIMARY KEY ("ID");
+
+-- ----------------------------
+-- Checks structure for table NEWS
+-- ----------------------------
+ALTER TABLE "WENSON"."NEWS" ADD CONSTRAINT "SYS_C007612" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
+ALTER TABLE "WENSON"."NEWS" ADD CONSTRAINT "SYS_C007613" CHECK ("ADDTIME" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
+ALTER TABLE "WENSON"."NEWS" ADD CONSTRAINT "SYS_C007614" CHECK ("TITLE" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
+ALTER TABLE "WENSON"."NEWS" ADD CONSTRAINT "SYS_C007615" CHECK ("PICTURE" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
+ALTER TABLE "WENSON"."NEWS" ADD CONSTRAINT "SYS_C007616" CHECK ("CONTENT" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
+
+-- ----------------------------
+-- Primary Key structure for table STOREUP
+-- ----------------------------
+ALTER TABLE "WENSON"."STOREUP" ADD CONSTRAINT "SYS_C007652" PRIMARY KEY ("ID");
+
+-- ----------------------------
+-- Checks structure for table STOREUP
+-- ----------------------------
+ALTER TABLE "WENSON"."STOREUP" ADD CONSTRAINT "SYS_C007621" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
+ALTER TABLE "WENSON"."STOREUP" ADD CONSTRAINT "SYS_C007622" CHECK ("ADDTIME" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
+ALTER TABLE "WENSON"."STOREUP" ADD CONSTRAINT "SYS_C007624" CHECK ("USERID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
+ALTER TABLE "WENSON"."STOREUP" ADD CONSTRAINT "SYS_C007626" CHECK ("NAME" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
+ALTER TABLE "WENSON"."STOREUP" ADD CONSTRAINT "SYS_C007629" CHECK ("PICTURE" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
+
+-- ----------------------------
+-- Primary Key structure for table TOKEN
+-- ----------------------------
+ALTER TABLE "WENSON"."TOKEN" ADD CONSTRAINT "SYS_C007653" PRIMARY KEY ("ID");
+
+-- ----------------------------
+-- Checks structure for table TOKEN
+-- ----------------------------
+ALTER TABLE "WENSON"."TOKEN" ADD CONSTRAINT "SYS_C007623" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
+ALTER TABLE "WENSON"."TOKEN" ADD CONSTRAINT "SYS_C007625" CHECK ("USERID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
+ALTER TABLE "WENSON"."TOKEN" ADD CONSTRAINT "SYS_C007628" CHECK ("USERNAME" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
+ALTER TABLE "WENSON"."TOKEN" ADD CONSTRAINT "SYS_C007631" CHECK ("TOKEN" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
+ALTER TABLE "WENSON"."TOKEN" ADD CONSTRAINT "SYS_C007632" CHECK ("ADDTIME" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
+ALTER TABLE "WENSON"."TOKEN" ADD CONSTRAINT "SYS_C007633" CHECK ("EXPIRATEDTIME" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
+
+-- ----------------------------
+-- Primary Key structure for table USERS
+-- ----------------------------
+ALTER TABLE "WENSON"."USERS" ADD CONSTRAINT "SYS_C007651" PRIMARY KEY ("ID");
+
+-- ----------------------------
+-- Checks structure for table USERS
+-- ----------------------------
+ALTER TABLE "WENSON"."USERS" ADD CONSTRAINT "SYS_C007634" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
+ALTER TABLE "WENSON"."USERS" ADD CONSTRAINT "SYS_C007635" CHECK ("USERNAME" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
+ALTER TABLE "WENSON"."USERS" ADD CONSTRAINT "SYS_C007636" CHECK ("PASSWORD" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
+ALTER TABLE "WENSON"."USERS" ADD CONSTRAINT "SYS_C007637" CHECK ("ADDTIME" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
+
+-- ----------------------------
+-- Primary Key structure for table YISHENGXINXI
+-- ----------------------------
+ALTER TABLE "WENSON"."YISHENGXINXI" ADD CONSTRAINT "SYS_C007654" PRIMARY KEY ("ID");
+
+-- ----------------------------
+-- Checks structure for table YISHENGXINXI
+-- ----------------------------
+ALTER TABLE "WENSON"."YISHENGXINXI" ADD CONSTRAINT "SYS_C007627" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
+ALTER TABLE "WENSON"."YISHENGXINXI" ADD CONSTRAINT "SYS_C007630" CHECK ("ADDTIME" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
+
+-- ----------------------------
+-- Primary Key structure for table YONGHU
+-- ----------------------------
+ALTER TABLE "WENSON"."YONGHU" ADD CONSTRAINT "SYS_C007655" PRIMARY KEY ("ID");
+
+-- ----------------------------
+-- Checks structure for table YONGHU
+-- ----------------------------
+ALTER TABLE "WENSON"."YONGHU" ADD CONSTRAINT "SYS_C007638" CHECK ("ID" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
+ALTER TABLE "WENSON"."YONGHU" ADD CONSTRAINT "SYS_C007639" CHECK ("ADDTIME" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
+ALTER TABLE "WENSON"."YONGHU" ADD CONSTRAINT "SYS_C007640" CHECK ("YONGHUMING" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
+ALTER TABLE "WENSON"."YONGHU" ADD CONSTRAINT "SYS_C007641" CHECK ("MIMA" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
+ALTER TABLE "WENSON"."YONGHU" ADD CONSTRAINT "SYS_C007642" CHECK ("XINGMING" IS NOT NULL) NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;
+
+-- ----------------------------
+-- Indexes structure for table YONGHU
+-- ----------------------------
+CREATE UNIQUE INDEX "WENSON"."YONGHUMING"
+  ON "WENSON"."YONGHU" ("YONGHUMING" ASC)
+  LOGGING
+  VISIBLE
+PCTFREE 10
+INITRANS 2
+STORAGE (
+  INITIAL 65536 
+  NEXT 1048576 
+  MINEXTENTS 1
+  MAXEXTENTS 2147483645
+  BUFFER_POOL DEFAULT
+  FLASH_CACHE DEFAULT
+)
+   USABLE;
