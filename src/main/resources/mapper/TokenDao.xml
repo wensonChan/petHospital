@@ -3,11 +3,18 @@
 
 <mapper namespace="com.dao.TokenDao">
 
-    <select id="selectListView"
+	<select id="selectListView"
 		resultType="com.entity.TokenEntity" >
 
-		SELECT  t.* FROM token  t 	        
+		SELECT  t.* FROM token  t
         <where> 1=1 ${ew.sqlSegment}</where>
 	</select>
+
+<!--	<insert id="insertToken">-->
+<!--        insert into WENSON.TOKEN-->
+<!--        values-->
+<!--            (#{id},#{userid},#{username},#{tableName},#{role},#{token},#{addtime},#{Expiratedtime})-->
+<!--    </insert>-->
+
 	
 </mapper>
