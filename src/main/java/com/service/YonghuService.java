@@ -16,7 +16,7 @@ import com.entity.view.YonghuView;
  *
  * @author 
  * @email 
- * @date 2021-04-15 20:04:18
+ * @date 2023-12-02 20:04:19
  */
 public interface YonghuService extends IService<YonghuEntity> {
 
